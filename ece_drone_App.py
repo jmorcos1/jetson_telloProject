@@ -38,7 +38,7 @@ def process_frame_action(drone, frame, cuda):
     Define what to do with each processed frame (cuda) from drone camera
     '''
     # A frame with a cudo object is ready to be processed
-    print('Frame:',frame)
+    print('Frame:',frame.number, '-', frame.width, 'x', frame.height)
     frameData[frame] = []
     
     # Do stuff with the cuda
@@ -56,3 +56,11 @@ async def fly(drone):
         await drone.turn_clockwise(90)
         await asyncio.sleep(3)
     await drone.land()
+    
+def main():
+    jt.run_jetson_tello_app(fly, process_frame=process_frame_action)
+
+    
+
+if __name__ == "__main__":
+    main()
