@@ -2,6 +2,7 @@ import asyncio
 import jetson_inference
 import jetsonTello.jetson_tello.app as jt
 
+
 #Face, Object Detectors:
 face_detector = jetson_inference.detectNet("facenet", threshold=0.5)
 object_detector = jetson_inference.detectNet("ssd-mobilenet-v2", threshold=0.5)
@@ -15,6 +16,7 @@ def detect_faces(cuda):
     '''
     print('[DETECT-Faces]')
     print('------------------------')
+    import pdb; pdb.set_trace()
     face_detections = face_detector.Detect(cuda)
     print('faces:')
     for d in face_detections:
