@@ -16,7 +16,7 @@ def detect_faces(cuda):
     '''
     print('[DETECT-Faces]')
     print('------------------------')
-    import pdb; pdb.set_trace()
+    #import pdb; pdb.set_trace()
     face_detections = face_detector.Detect(cuda)
     print('faces:')
     for d in face_detections:
