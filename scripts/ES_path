@@ -1,0 +1,1 @@
+ExecStart=/home/ece498/jetson_telloProject/scripts/jupLab_run.sh

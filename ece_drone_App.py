@@ -1,6 +1,6 @@
 import asyncio
 import jetson_inference
-import jetsonTello.jetson_tello.app as jt
+import jetsonTelloVideo.jetson_tello.app as jt
 
 
 #Face, Object Detectors:

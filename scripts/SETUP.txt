@@ -1,0 +1,19 @@
+Instructions to set up Jupyter Lab Service:
+
+1.) make all of the script files (the ones ending in .sh) exuctuable:
+	chmod +x <file.sh>
+
+2.) run the jupyter service setup script from this directory:
+	./setupJL_service.sh
+
+3.) reload systemctl daemon:
+	sudo systemctl daemon-reload
+
+4.) enable the service:
+	sudo systemctl enable jupyter
+
+5.) start the service:
+	sudo systemctl start jupyter
+
+6.) check the status, and use this command any time to see the browser link:
+	sudo systemctl status jupyter
