@@ -18,4 +18,11 @@
 ### 14.):
     to run a jetson-inference docker container and mount some directories run:
     ./fProject_docker_run.sh
-### 15.) get in that container and run the app, or make it your own
+### 15.) Use the container to test your code
+Inside the container (root@user-desktop:/#):
+    cd ..
+    cd home
+    cd jetson_telloProject
+    python3 ece_drone_App.py
+
+### 16.) Continue using jupyter lab view or change the code
