@@ -1,7 +1,7 @@
 #!/bin/bash
 #*Jetson_Inference Container
 ../jetson-inference/docker/run.sh \
--v /home/ece498:/home \
+-v ${HOME}:/home \
 -v /bin:/bin \
 -v /dev:/dev \
 -v /lib:/lib \
