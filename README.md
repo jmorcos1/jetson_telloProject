@@ -18,8 +18,7 @@
 ### 14.):
     to run a jetson-inference docker container and mount some directories run:
     ./fProject_docker_run.sh
-### 15.) Use the container to test your code
-Inside the container (root@user-desktop:/#):
+### 15.) Use the container to test your code.  Inside the container (root@user-desktop:/#):
     cd ..
     cd home
     cd jetson_telloProject
