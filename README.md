@@ -8,6 +8,13 @@
 ### 6.) pip install .
 ### 7.) cd ..
 ### 8.) clone this project: https://github.com/dusty-nv/jetson-inference
+### 8.5):
+    cd jetson-inference
+    sudo vi Dockerfile
+    #add the following lines toward the end of the file (but before the ENV line):
+        # Install Docker inside the Docker container
+        RUN apt-get update && apt-get install -y docker.io
+    
 ### 9.) cd scripts
 ### 10.) make each .sh script executable
 ### 11.) echo "export ARCH=$(uname -m)" >> ~/.bashrc
