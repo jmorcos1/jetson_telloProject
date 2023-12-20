@@ -1,8 +1,8 @@
 #!/bin/bash
 #*Jetson_Inference Container
-cd ../jetson-inference 
+cd ../../jetson-inference 
 docker/run.sh \
--v ${HOME}:/home
+-v ${HOME}/repos:/home
 #-r /bin/bash /home/jetson_telloProject/scripts/jupLab_run2.sh
 # -v /bin:/bin \
 # -v /dev:/dev \
