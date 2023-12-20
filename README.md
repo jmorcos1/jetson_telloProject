@@ -47,6 +47,7 @@
 ### 14.) to run a jetson-inference docker container and mount some directories run (from scripts folder):
     ./fProject_docker_run.sh
 ### 15.) Inside the container (root@user-desktop:/#):
-    cd jetson_telloProject/scrpits
+    cd jetson_telloProject/scripts
     ./jupLab_run2.sh
+    # will take some time because it needs to install jupyterlab in container...
 ### 16.) Continue using jupyter lab in the container to run, test, edit code
