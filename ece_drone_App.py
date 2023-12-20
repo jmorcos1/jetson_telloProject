@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import asyncio
 from jetson_inference import detectNet
 import jetsonTelloVideo.jetson_tello.app as jt

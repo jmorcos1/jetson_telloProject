@@ -8,7 +8,7 @@ RestartSec=5
 PIDFile=/run/jupyter.pid
 User=ece498
 Group=ece498
-ExecStart=/home/ece498/jetson_telloProject/scripts/jupLab_run.sh
+ExecStart=/home/ece498/repos/jetson_telloProject/scripts/jupLab_run.sh
 WorkingDirectory=/home/ece498
 Environment="LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgomp.so.1"
 
