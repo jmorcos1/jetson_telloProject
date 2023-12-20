@@ -1,11 +1,11 @@
 import asyncio
-import jetson_inference
+from jetson_inference import detectNet
 import jetsonTelloVideo.jetson_tello.app as jt
 
 
 #Face, Object Detectors:
-face_detector = jetson_inference.detectNet("facenet", threshold=0.5)
-object_detector = jetson_inference.detectNet("ssd-mobilenet-v2", threshold=0.5)
+face_detector = detectNet("facenet", threshold=0.5)
+object_detector = detectNet("ssd-mobilenet-v2", threshold=0.5)
 
 #Frames and data Dictionary
 frameData = {}

@@ -2,7 +2,7 @@
 #*Jetson_Inference Container
 cd ../../jetson-inference 
 docker/run.sh \
--v ${HOME}/repos/jetson_telloProject:/jetson-inference/jetson_telloProject \
+-v ${HOME}/repos/jetson_telloProject:/jetson-inference/build/aarch64/bin/jetson_telloProject \
 -v ${HOME}/.local/bin:/home/.local/bin \
 -v /usr/local/cuda-10.2/targets/aarch64-linux/lib:/usr/local/cuda-10.2/targets/aarch64-linux/lib \
 -v /usr/lib/aarch64-linux-gnu:/usr/lib/aarch64-linux-gnu
