@@ -1,5 +1,5 @@
 #!/bin/bash
-/home/ece498/.local/bin/jupyter lab --allow-root \
+${HOME}/.local/bin/jupyter lab --allow-root \
 	--ip 0.0.0.0 \
 	--port 8889 \
 	--ServerApp.password='' \
