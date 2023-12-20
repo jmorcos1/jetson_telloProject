@@ -1,21 +1,13 @@
 #!/bin/bash
 #*Jetson_Inference Container
-../jetson-inference/docker/run.sh \
--v ${HOME}:/home \
--v /bin:/bin \
--v /dev:/dev \
--v /lib:/lib \
--v /usr:/usr \
--v /run:/run
-#*_JETSON_ML Container:
-#Option?
-# sudo docker run -it --rm --runtime nvidia --network host \
-# 	-v /bin:/bin \
-# 	-v /dev:/dev \
-# 	-v /lib:/lib \
-# 	-v /usr:/usr \
-# 	-v /run:/run \
-# 	-v /home/ece498:/home \
-# 	--privileged \
-# 	--pid=host \
-# 	nvcr.io/nvidia/l4t-ml:r32.7.1-py3
+cd ../jetson-inference 
+docker/run.sh \
+-v ${HOME}:/home
+#-r /bin/bash /home/jetson_telloProject/scripts/jupLab_run2.sh
+# -v /bin:/bin \
+# -v /dev:/dev \
+# -v /lib:/lib \
+# -v /run:/run \
+# -v /etc:/etc \
+# -v /var/run/docker.sock:/var/run/docker.sock \
+# -v /usr/local/cuda-10.2/targets/aarch64-linux/lib:/usr/local/cuda-10.2/targets/aarch64-linux/lib
