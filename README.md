@@ -1,9 +1,20 @@
 # jetson_telloProject
 ## Instructions:
-### 1.) clone into this repo with --recursive flag
+### 1.) go to wherever you keep your repos (or a new folder):
+    cd path/to/local/repos
+### 2.) clone this project: https://github.com/robagar/h264decoder
+### 3.):
+    cd h264decoder
+    sudo apt install libswscale-dev libavcodec-dev libavutil-dev
+    pip install .
+### 4.) cd ..
+### 5.) clone this project: https://github.com/dusty-nv/jetson-inference
+    git clone --recursive --depth=1 https://github.com/dusty-nv/jetson-inference
+    cd jetson-inference
+### 1.) clone into THIS repo (jetson_telloProject) with --recursive flag
 ### 2.) cd jetson_telloProject
 ### 3.) clone this project: https://github.com/robagar/h264decoder
-### 4.) cd h264decoder
+
 ### 5.) sudo apt install libswscale-dev libavcodec-dev libavutil-dev
 ### 6.) pip install .
 ### 7.) cd ..
