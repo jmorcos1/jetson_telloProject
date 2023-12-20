@@ -1,5 +1,21 @@
 # jetson_telloProject
 ## Instructions:
+### 0.0) instally stuff:
+    pip3 install cython
+    pip3 install numpy
+    pip3 install -U pandas
+### 0.1) do this (https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md):
+### Add "default-runtime": "nvidia" to your /etc/docker/daemon.json configuration file before attempting to build the containers:
+    {
+        "runtimes": {
+            "nvidia": {
+                "path": "nvidia-container-runtime",
+                "runtimeArgs": []
+            }
+        },
+
+        "default-runtime": "nvidia"
+    }
 ### 1.) Create a repos folder in home directory:
     cd ~
     mkdir repos
@@ -14,30 +30,23 @@
 ### 5.) clone this project: https://github.com/dusty-nv/jetson-inference
     git clone --recursive --depth=1 https://github.com/dusty-nv/jetson-inference
     cd jetson-inference
-### 6.) Don't build from source, we're gonna us the docker container
-### 7.) inside jetson-inference:
-    cd docker #edit run.sh, line #64:
-    ### DOCKER_ROOT="/jetson-inference"	# where the project resides inside docker
-    DOCKER_ROOT="/home/jetson-inference"	# where the project resides inside docker
-### 8.) cd ..
-### 9.) clone into THIS repo (jetson_telloProject) with --recursive flag
+### 6.) Don't build from source, we're gonna use the docker container
+### 7.) cd ..
+### 8.) clone into THIS repo (jetson_telloProject) with --recursive flag
     #ssh
     git clone --recursive --depth=1 git@github.com:jmorcos1/jetson_telloProject.git
     #https
     git clone --recursive --depth=1 https://github.com/jmorcos1/jetson_telloProject.git
-### 10.) cd jetson_telloProject/scripts    
-### 11.) make each .sh script executable (chmod +x <script.sh)
-### 12.) echo "export ARCH=$(uname -m)" >> ~/.bashrc
-### 13.) source ~/.bashrc
-### 14.(recommended):
+### 9.) cd jetson_telloProject/scripts    
+### 10.) make each .sh script executable (chmod +x <script.sh)
+### 11.) echo "export ARCH=$(uname -m)" >> ~/.bashrc
+### 12.) source ~/.bashrc
+### 13.(recommended):
     If you want to setup a jupyter system service (see: https://janakiev.com/blog/jupyter-systemd/),
     then read SETUP.txt inside scripts and follow those instructions
-### 15.) to run a jetson-inference docker container and mount some directories run (from scripts folder):
+### 14.) to run a jetson-inference docker container and mount some directories run (from scripts folder):
     ./fProject_docker_run.sh
-### 16.) Use the container to test your code.  Inside the container (root@user-desktop:/#):
-    cd ..
-    cd home
-    cd jetson_telloProject
-    python3 ece_drone_App.py
-
-### 16.) Continue using jupyter lab view or change the code, use the container for running and testing the code
+### 15.) Inside the container (root@user-desktop:/#):
+    cd jetson_telloProject/scrpits
+    ./jupLab_run2.sh
+### 16.) Continue using jupyter lab in the container to run, test, edit code
