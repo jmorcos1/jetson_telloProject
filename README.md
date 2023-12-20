@@ -16,11 +16,15 @@
     cd jetson-inference
 ### 6.) Don't build from source, we're gonna us the docker container
 ### 7.) inside jetson-inference:
--> go to docker folder, edit run.sh, line #64:
+    cd docker #edit run.sh, line #64:
     ### DOCKER_ROOT="/jetson-inference"	# where the project resides inside docker
     DOCKER_ROOT="/home/jetson-inference"	# where the project resides inside docker
 ### 8.) cd ..
 ### 9.) clone into THIS repo (jetson_telloProject) with --recursive flag
+    #ssh
+    git clone --recursive --depth=1 git@github.com:jmorcos1/jetson_telloProject.git
+    #https
+    git clone --recursive --depth=1 https://github.com/jmorcos1/jetson_telloProject.git
 ### 10.) cd jetson_telloProject/scripts    
 ### 11.) make each .sh script executable (chmod +x <script.sh)
 ### 12.) echo "export ARCH=$(uname -m)" >> ~/.bashrc
