@@ -1,9 +1,11 @@
 # jetson_telloProject
 ## Instructions:
 ### 0.0) instally stuff:
+    first run 'sudo apt-get install python-numpy python3-numpy'
     pip3 install cython
-    pip3 install numpy
+    pip3 install numpy==1.13.3
     pip3 install -U pandas
+    
 ### 0.1) do this (https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md):
 ### Add "default-runtime": "nvidia" to your /etc/docker/daemon.json configuration file before attempting to build the containers:
     {
@@ -51,3 +53,13 @@
     ./jupLab_run2.sh
     # will take some time because it needs to install jupyterlab in container...
 ### 16.) Continue using jupyter lab in the container to run, test, edit code
+
+### 17.) If you want to buld from source:
+    cd jetson-inference
+    mkdir build
+    cd build
+    cmake ../
+    make -j$(nproc)
+    sudo make install
+    sudo ldconfig
+
