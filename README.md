@@ -1,10 +1,54 @@
 # jetson_telloProject
 ## Instructions:
 ### 0.0) instally stuff:
-    first run 'sudo apt-get install python-numpy python3-numpy'
-    pip3 install cython
-    pip3 install numpy==1.13.3
-    pip3 install -U pandas
+    #SOURCE:https://pyimagesearch.com/2020/03/25/how-to-configure-your-nvidia-jetson-nano-for-computer-vision-and-deep-learning/
+    #Install system-level dependencies
+    sudo apt-get update && sudo apt-get upgrade
+    sudo apt-get install git cmake
+    sudo apt-get install libatlas-base-dev gfortran
+    sudo apt-get install libhdf5-serial-dev hdf5-tools
+    sudo apt-get install python3-dev
+    sudo apt-get install nano locate
+
+    #SciPy
+    sudo apt-get install libfreetype6-dev python3-setuptools
+    sudo apt-get install protobuf-compiler libprotobuf-dev openssl
+    sudo apt-get install libssl-dev libcurl4-openssl-dev
+    sudo apt-get install cython3
+
+    #XML stuff cor TensorFlow
+    sudo apt-get install libxml2-dev libxslt1-dev
+
+    #Update CMake
+    wget http://www.cmake.org/files/v3.13/cmake-3.13.0.tar.gz
+    tar xpvf cmake-3.13.0.tar.gz cmake-3.13.0/
+    cd cmake-3.13.0/
+    ./bootstrap --system-curl
+    make -j4
+
+    #update bash profile
+    echo 'export PATH=/home/nvidia/cmake-3.13.0/bin/:$PATH' >> ~/.bashrc
+    source ~/.bashrc
+
+    #OpenCV system-level dependencies
+    sudo apt-get install build-essential pkg-config
+    sudo apt-get install libtbb2 libtbb-dev
+
+    #codecs and Image libraries
+    sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev
+    sudo apt-get install libxvidcore-dev libavresample-dev
+    sudo apt-get install libtiff-dev libjpeg-dev libpng-dev
+
+    #GUI libraries
+    sudo apt-get install python-tk libgtk-3-dev
+    sudo apt-get install libcanberra-gtk-module libcanberra-gtk3-modul
+
+    #USB webcam stuff
+    sudo apt-get install libv4l-dev libdc1394-22-dev
+    #first run 'sudo apt-get install python-numpy python3-numpy'
+    #pip3 install cython
+    #pip3 install numpy==1.13.3
+    #pip3 install -U pandas
     
 ### 0.1) do this (https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md):
 ### Add "default-runtime": "nvidia" to your /etc/docker/daemon.json configuration file before attempting to build the containers:
