@@ -160,7 +160,7 @@
     #turn on tello
     #do this from outside container:
     sudo nmcli device wifi list
-    sudo nmcli device connect <TELLO-****>
+    sudo nmcli device wifi connect <TELLO-****>
 
 ### Appendix A.) Testing Example code:
     # Use test.py to check that things can import correctly and detectnet is working
