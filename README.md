@@ -1,9 +1,13 @@
 # jetson_telloProject
     '''
-    This is a fork of jetson_tello
+    This repo contains a fork of jetson_tello and builds upon it
     2 goals:
     1.) make it work on (my) jetson
     2.) make it do something cool for my project
+
+    Main reason for Forking:
+    Combining (and patching) 2 repos from @robagar
+    
     See below for environment setup instructions to 'build' and run the project 
     '''
 ## Instructions:
