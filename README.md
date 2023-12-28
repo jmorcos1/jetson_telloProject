@@ -155,6 +155,13 @@
 #
 #
 
+### Appendix I.) Connecting the drone to Jetson:
+    #have a wifi dongle hooked up
+    #turn on tello
+    #do this from outside container:
+    sudo nmcli device wifi list
+    sudo nmcli device connect <TELLO-****>
+
 ### Appendix A.) Testing Example code:
     # Use test.py to check that things can import correctly and detectnet is working
     # ece_drone_App.py is a work in progress app that requires the drone connected to jetson by wifi
