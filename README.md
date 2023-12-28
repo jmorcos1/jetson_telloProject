@@ -118,7 +118,6 @@
 ### 13.(recommended):
     # If you want to setup a jupyter system service (see: https://janakiev.com/blog/jupyter-systemd/),
     # then read SETUP.txt inside scripts and follow those instructions
-    cd 
     # after running that, you can open the jupyterlab in a browser and work in there from then on
 
 ### 14.) to run a jetson-inference docker container and mount some directories:
