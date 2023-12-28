@@ -1,6 +1,6 @@
 #!/bin/bash
-pip3 install jupyterlab
-/home/.local/bin/jupyter lab --allow-root \
+#/home/.local/bin/jupyter lab --allow-root \
+python3 /usr/local/lib/python3.6/dist-packages/jupyter.py lab --allow-root \
 	--ip 0.0.0.0 \
 	--port 8887 \
 	--ServerApp.password='' \

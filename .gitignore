@@ -1,3 +1,4 @@
 jetson-inference/
 h264decoder/
 __pycache__/
+.ipynb_checkpoints/
