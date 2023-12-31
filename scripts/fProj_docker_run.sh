@@ -1,6 +1,7 @@
 #!/bin/bash
 #*Jetson_Inference Container
 cd ../../jetson-inference 
+#docker/run.sh -c dustynv/jetson-inference:r32.7.1 \
 docker/run.sh \
 -v ${HOME}/repos/h264decoder:/h264decoder \
 -v ${HOME}/repos/jetson_telloProject:/jetson_telloProject

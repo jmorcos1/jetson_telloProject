@@ -1,13 +1,27 @@
 #!/usr/bin/env python3
 import asyncio
 from jetson.inference import detectNet
+from jetson.utils import videoOutput
 import jetsonTelloVideo.jetson_tello.app as jt
 
-#Face, Object Detectors:
-face_detector = detectNet("facenet", threshold=0.5)
-object_detector = detectNet("ssd-mobilenet-v2", threshold=0.5)
+# Output streaming display
+display = videoOutput("rtp://192.168.1.13:1234")
+print('Created RTP Stream')
 
-#Frames and data Dictionary
+# Face, Object Detectors:
+face_detector = detectNet("facenet", threshold=0.5)
+#face_detector.SetTrackingEnabled(True)
+#face_detector.SetTrackingParams(minFrames=3, dropFrames=15, overlapThreshold=0.5)
+
+object_detector = detectNet("ssd-mobilenet-v2", threshold=0.5)
+#object_detector.SetTrackingEnabled(True)
+#object_detector.SetTrackingParams(minFrames=3, dropFrames=15, overlapThreshold=0.5)
+print('Created Face and Object detectors')
+
+#print(object_detector.GetTrackingParams())
+
+
+# Frames and data Dictionary
 frameData = {}
 
 #*Detection Functions
@@ -19,6 +33,8 @@ def detect_faces(cuda):
     print('------------------------')
     #import pdb; pdb.set_trace()
     face_detections = face_detector.Detect(cuda)
+    #display.Render(cuda)
+    #display.SetStatus("Object Detection | Network {:.0f} FPS".format(face_detector.GetNetworkFPS()))
     print('faces:')
     for d in face_detections:
         print(d)
@@ -31,6 +47,8 @@ def detect_objects(cuda):
     print('[DETECT-Objects]')
     print('------------------------')
     object_detections = object_detector.Detect(cuda)
+    #display.Render(cuda)
+    #display.SetStatus("Object Detection | Network {:.0f} FPS".format(object_detector.GetNetworkFPS()))
     print('objects:')
     for d in object_detections:
         print(d)
@@ -47,6 +65,9 @@ def process_frame_action(drone, frame, cuda):
     # Do stuff with the cuda
     frameData[frame].append(detect_faces(cuda))
     frameData[frame].append(detect_objects(cuda))
+    display.Render(cuda)
+    display.SetStatus("Object Detection | Network {:.0f} FPS".format(object_detector.GetNetworkFPS()))
+    
     
 #*Drone Functions (Async)
 async def fly(drone):
@@ -55,11 +76,11 @@ async def fly(drone):
     '''
     await drone.takeoff()
     print('We Are Flying!!!')
-    for i in range(4):
-        await asyncio.sleep(3)
+    for i in range(10):
+        await asyncio.sleep(5)
         print('Turning!')
         print(len(frameData))
-        await drone.turn_clockwise(90)
+        await drone.turn_clockwise(45)
     await asyncio.sleep(3)
     await drone.land()
 
