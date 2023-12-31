@@ -21,8 +21,53 @@
     See below for environment setup instructions to 'build' and run the project 
     '''
 ## Instructions:
-### NOTE: start here if you have a pretty fresh jetson and/or you want to make sure you have the essentials
-### 0.0) instally stuff:
+### NOTE: start here if you just got a new Jetson Nano Developer Kit or you want to (re)FLASH your SD card image
+### 0.0) Flashing Jetpack 4.6.4:
+    #0). have a 64 GB SD and a PC with an SD card reader
+    #1.) Go to https://developer.nvidia.com/jetpack-sdk-464 and download the Jetson Nano Developer Kit SD card Image (4.6.4) --it's a big file
+    #2.) Follow these instructions: https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write
+    #2.1) https://www.sdcard.org/downloads/formatter/sd-memory-card-formatter-for-windows-download/
+![image](https://github.com/jmorcos1/jetson_telloProject/assets/32444584/f62b508d-8168-43ce-9227-a2cc3019b86f)
+    #2.2) https://etcher.balena.io/
+![image](https://github.com/jmorcos1/jetson_telloProject/assets/32444584/978f38df-7fdc-4ca0-b631-c6bcbc884b41)
+![image](https://github.com/jmorcos1/jetson_telloProject/assets/32444584/40f21afd-286b-4e08-b38e-f7fc205388d5)
+
+    #NOTE: for some it may be easier to do the first boot with HDMI connected to monitor and keyboard/mouse connected to jetson
+    #SEE: https://www.youtube.com/watch?v=uvU8AXY1170
+    #3.) Once the SD card is ready, insert it and set up your jetson in headless mode:
+    # Insert the SD card into the slot on the Jetson
+    # Insert the Power cable to the jetson to power it on (give it a minute to boot up)
+    # Connect micro-sd on jetson to USB on your PC
+    # Open up a Serial Terminal Connection to the Nano using the correct COM port and an app such as Putty or Tera Term
+    #Review and accept NVIDIA Jetson software EULA
+    #Select system language, keyboard layout, and time zone
+    #Create username, password, and computer name
+    #Select APP partition size—it is recommended to use the max size suggested
+
+    #Set up network of choice (that is on you)
+
+    #Now open your ssh tunnel to your jetson (not COM/Serial, SSH!)
+    # do this using the network you set up, or the l4tbridge (192.168.55.1)
+    # See my Jetson_Setup.mp4 video
+
+    #Set the swap Space
+    # Disable ZRAM:
+    sudo systemctl disable nvzramconfig
+
+    # Create 4GB swap file
+    sudo fallocate -l 4G /mnt/4GB.swap
+    sudo chmod 600 /mnt/4GB.swap
+    sudo mkswap /mnt/4GB.swap
+
+    # Append the following line to /etc/fstab
+    sudo su
+    echo "/mnt/4GB.swap swap swap defaults 0 0" >> /etc/fstab
+    exit
+
+    # REBOOT!
+
+### NOTE: start here if you have a pretty freshly flashed jetson and/or you want to make sure you have the essentials
+### 0.1) instally stuff:
     #SOURCE:https://pyimagesearch.com/2020/03/25/how-to-configure-your-nvidia-jetson-nano-for-computer-vision-and-deep-learning/
     #Install system-level dependencies
     sudo apt-get update && sudo apt-get upgrade
@@ -73,7 +118,7 @@
     #pip3 install -U pandas
     
 ### NOTE: start here if you are first cloning the project    
-### 0.1) do this (https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md):
+### 0.2) do this (https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md):
 ### Add "default-runtime": "nvidia" to your /etc/docker/daemon.json configuration file before attempting to build the containers:
     {
         "runtimes": {
