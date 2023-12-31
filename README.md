@@ -7,10 +7,21 @@
 
     Main reason for Forking:
     Combining (and patching) 2 repos from @robagar
+
+    > ece_drone_App.py
+        The main project app
+    > project.ipynb
+        The main project notebook, for testing, training, etc.
+    > my-dection.py
+        Example from https://github.com/dusty-nv/jetson-inference/blob/master/docs/detectnet-example-2.md
+    > test.py
+        Make sure you can import and run the basics
+
     
     See below for environment setup instructions to 'build' and run the project 
     '''
 ## Instructions:
+### NOTE: start here if you have a pretty fresh jetson and/or you want to make sure you have the essentials
 ### 0.0) instally stuff:
     #SOURCE:https://pyimagesearch.com/2020/03/25/how-to-configure-your-nvidia-jetson-nano-for-computer-vision-and-deep-learning/
     #Install system-level dependencies
@@ -61,6 +72,7 @@
     #pip3 install numpy==1.13.3
     #pip3 install -U pandas
     
+### NOTE: start here if you are first cloning the project    
 ### 0.1) do this (https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md):
 ### Add "default-runtime": "nvidia" to your /etc/docker/daemon.json configuration file before attempting to build the containers:
     {
@@ -120,6 +132,7 @@
     # then read SETUP.txt inside scripts and follow those instructions
     # after running that, you can open the jupyterlab in a browser and work in there from then on
 
+### NOTE: start here (skip all previous) if this is not your initial setup
 ### 14.) to run a jetson-inference docker container and mount some directories:
     cd jetson_telloProject/scripts
     ./fProject_docker_run.sh
@@ -136,7 +149,9 @@
     ![image](https://github.com/jmorcos1/jetson_telloProject/assets/32444584/0b3a1f72-dc9f-4e54-a08f-1116a3140ce4)
     ![image](https://github.com/jmorcos1/jetson_telloProject/assets/32444584/1195621c-e490-4b92-b67f-9788be0f909e)
 
-    #to download more networks:
+    #if you have all the networks you need, just select Quit
+
+    #to download more networks (from inside container):
     cd /jetson-inference/tools
     ./download-models.sh
 
