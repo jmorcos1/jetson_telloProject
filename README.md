@@ -47,8 +47,7 @@
     #Set up network of choice (that is on you)
 
     #Now open your ssh tunnel to your jetson (not COM/Serial, SSH!)
-    # do this using the network you set up, or the l4tbridge (192.168.55.1)
-    # See my Jetson_Setup.mp4 video
+    # do this using the network you set up, or the l4tbridge (192.168.55.1) usb
 
     #Set the swap Space
     # Disable ZRAM:
@@ -116,6 +115,26 @@
     #pip3 install cython
     #pip3 install numpy==1.13.3
     #pip3 install -U pandas
+
+    #pip and pip3
+    sudo apt install python3-pip
+    sudo apt-get install python-pip
+
+    #pybind11
+    pip install pybind11
+    pip3 install pybind11
+
+    # More Essentials
+    sudo apt-get update
+    sudo apt-get install build-essential
+    sudo apt-get install libffi-dev -y
+    
+    # JupyterLab
+    pip3 install --upgrade setuptools
+    pip3 install pyzmq==20.0.0
+    pip3 install packaging
+    pip3 install jupyterlab
+
     
 ### NOTE: start here if you are first cloning the project    
 ### 0.2) do this (https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md):
@@ -158,7 +177,11 @@
     
 ### 4.) cd ..
 ### 5.) clone this project: https://github.com/dusty-nv/jetson-inference
+    #https
     git clone --recursive --depth=1 https://github.com/dusty-nv/jetson-inference
+    #ssh
+    git clone --recursive --depth=1 git@github.com:dusty-nv/jetson-inference.git
+    
     
 ### 6.) Don't build from source, we're gonna use the docker container
 ### 7.) #you should still be in the repos directory
@@ -182,7 +205,8 @@
     cd jetson_telloProject/scripts
     ./fProject_docker_run.sh
 
-### 15.) Inside the container (root@user-desktop:/#):
+### NOTE: If not using the container, see Appendix B
+### 15.) Inside the container (root@user-desktop:/#) [or on your jetson if not using container]:
     cd /jetson_telloProject/scripts
     ./in_container_setup.sh
     # it will take some time because it needs to install a bunch of things including jupyterlab and h264decoder inside the container...
@@ -249,3 +273,21 @@
     sudo make install
     sudo ldconfig
 
+### 15.B.) Not using container:
+    cd /jetson_telloProject/scripts
+    ./no_container_setup.sh
+    # Download any ML Networks you wish (they will download into networks folder(s) in jetson-inference)
+    # ! Make Sure to download the FaceNet and SSD-Mobilenet-v2 options:
+    ![image](https://github.com/jmorcos1/jetson_telloProject/assets/32444584/0b3a1f72-dc9f-4e54-a08f-1116a3140ce4)
+    ![image](https://github.com/jmorcos1/jetson_telloProject/assets/32444584/1195621c-e490-4b92-b67f-9788be0f909e)
+
+    #if you have all the networks you need, just select Quit
+
+    #to download more networks (from inside container):
+    cd /jetson-inference/tools
+    ./download-models.sh
+    
+### 17.B) Continue using jupyter service to run, test, edit code
+    # using this method you can have your main ssh tunnel running on your host pc
+    # plus a constantly running jupyter lab server (see step 13)
+    # No need for container, doing everything directly on the jetson
